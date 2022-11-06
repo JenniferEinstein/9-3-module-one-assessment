@@ -144,58 +144,72 @@ function countByRating(movies) {
   */
 
 let ratingsObject = {}
-let arrayPG
-
-let arrayP
-let arrayPG13
-let arrayR
 
 
 
-// for (let i=0;i<movies.length;i++){
-//   if (movies[i].rated = "PG"){
-//     arrayPG.push(movies.title)
-//   } 
-//   if (movies[i].rated = "P"){
-//     arrayP.push(movies.title)
-//   } 
-//   if (movies[i].rated = "PG13"){
-//     arrayPG13.push(movies.title)
-//   } 
-//   if (movies[i].rated = "R"){
-//     arrayR.push(movies.title)
-//   } 
-
-function isPG(movies,PG) {
-  var r=0
-  for (i=0;i<movies.length; i++){
-    if (movies[i] == PG){r++} 
-    }return r
+let countPG = 0
+for (let i=0; i<movies.length; i++){
+  if (movies[i].rated === "PG") countPG++;
 }
 
-function isP(movies,P) {
-  var n=0
-  for (i=0;i<movies.length; i++){
-    if (movies[i] == P){n++} 
-    }return n
+
+
+
+return ratingsObject
 }
 
-if (isPG != 0){
-  arrayPG = {PG:isPG}
-}
 
-if (isP != 0) {
-  arrayP = {P:isP}
-}
+// let arrayPG
 
-ratingsObject=[arrayP, arrayPG]
+// let arrayP
+// let arrayPG13
+// let arrayR
+
+
+
+// // for (let i=0;i<movies.length;i++){
+// //   if (movies[i].rated = "PG"){
+// //     arrayPG.push(movies.title)
+// //   } 
+// //   if (movies[i].rated = "P"){
+// //     arrayP.push(movies.title)
+// //   } 
+// //   if (movies[i].rated = "PG13"){
+// //     arrayPG13.push(movies.title)
+// //   } 
+// //   if (movies[i].rated = "R"){
+// //     arrayR.push(movies.title)
+// //   } 
+
+// function isPG(movies,PG) {
+//   var r=0
+//   for (i=0;i<movies.length; i++){
+//     if (movies[i] == PG){r++} 
+//     }return r
+// }
+
+// function isP(movies,P) {
+//   var n=0
+//   for (i=0;i<movies.length; i++){
+//     if (movies[i] == P){n++} 
+//     }return n
+// }
+
+// if (isPG != 0){
+//   arrayPG = {PG:isPG}
+// }
+
+// if (isP != 0) {
+//   arrayP = {P:isP}
+// }
+
+// ratingsObject=[arrayP, arrayPG]
 
 // let filteredPG=movies.filter(isPG);
 
 // let countPG = movies.filter(movies)
 
-return ratingsObject
-}
+
 
 /**
  * findById()
@@ -218,18 +232,29 @@ function findById(movies, imdbID) {
 5.3 take the IMDB id parameter and see if it matches any of the IDs in the movie object list. If it does, return the movie object.
 
 why isn't this working?
+OKm I will try with an array. No change.
+Maybe filter? Not the way I did it, no.
 */
 
 
+
+let winner=movies.filter(movie => movie.imdbID === imdbID)
+
+
+let movieWanted=[]
 if (movies = []){
   return null
 } 
 
 for (let i=0; i<movies.length; i++){
   if((movies[i].imdbID)===imdbID) {
-    return movies[i]
+    movieWanted.push(movies[i])
+    return movieWanted
   }
-} return movies[i] .  //does not change result
+
+}
+return winner
+
 }
 
 /**
@@ -261,12 +286,11 @@ function filterByGenre(movies, genre) {
   */
 
 let desiredMovies = []
-// genre=genre.toLowerCase()
-// genre=string[0].toUpperCase()
+genre=genre.toLowerCase()
 
 for (let i=0; i<movies.length; i++) {
 
-  if(movies[i].genre.includes(genre)) {
+  if(movies[i].genre.toLowerCase().includes(genre)) {
     desiredMovies.push(movies[i])
   }
 }

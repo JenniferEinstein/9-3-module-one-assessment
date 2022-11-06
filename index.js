@@ -93,7 +93,34 @@ return +highestMS
  *  getAverageIMDBRating(movies);
  *  //> 7.76
  */
-function getAverageIMDBRating() {}
+function getAverageIMDBRating(movies) {
+    /* instructions to self
+        input = array of movie objects
+        output = one number: the average of all IMDB ratings
+        3.1  Add parameter movies
+        3.2  set variable for comboRating
+        3.2a set variable for averageRating 
+        3.3  option one. Add all the IMDB  ratingss and then divide by the number of movies (known by length of the array)
+        3.3a  add each item into an array and then add an array. NO
+        3.3aa sum the numbers as I iterate.
+        3.4 return averageRating
+
+        problems: how to turn the rating that is over 10 into an actual number since it is reading as a string.
+
+        after: Will the ratings always come in the same order? Is there a way to make sure that the source is IMDB before adding it?
+        */
+
+  if (movies.length===0) {return 0}
+  let comboRating = 0
+  let averageRating = 0
+
+  for (let i=0;i<movies.length;i++) {
+    comboRating += +(movies[i].ratings[0].value.slice(0,3))
+  }
+  averageRating = comboRating/(movies.length)
+  
+  return averageRating
+}
 
 /**
  * countByRating()

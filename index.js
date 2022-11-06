@@ -59,7 +59,28 @@ output = movie titles
  *  getHighestMetascore(movies);
  *  //> 96
  */
-function getHighestMetascore() {}
+function getHighestMetascore(movies) {
+    /* instructions to self
+        2.0. add paramter/s
+        input = array of movie objects
+        output = one number: the highest metascore that any move rates
+        2.1. set variable highest to 0
+        2.2. go to the first movie in the array
+        2.3. find the meta score of the first movie. If it is higher than 0, replace /highest/ with that number.
+        2.4. go to the next movie and repeat.
+        2.5. keep doing this until you have gone through all the movies.
+        2.6. return highestMS
+        after:  I did not think it would return a string, but it did. Could I have returned a number the whole time?
+        */
+
+  let highestMS = 0
+  for (let i=0; i<movies.length; i++) {
+    if(movies[i].metascore > highestMS) {
+      highestMS=movies[i].metascore
+    }
+  }
+return +highestMS
+}
 
 /**
  * getAverageIMDBRating()

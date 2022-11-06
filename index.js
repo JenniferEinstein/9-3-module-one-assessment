@@ -188,7 +188,7 @@ if (isP != 0) {
   arrayP = {P:isP}
 }
 
-RatingsObject=[arrayP, arrayPG]
+ratingsObject=[arrayP, arrayPG]
 
 // let filteredPG=movies.filter(isPG);
 
@@ -215,7 +215,9 @@ function findById(movies, imdbID) {
 /*
 5.1 insert parameters
 5.2 insert guard clause: return null for empty array or no ID match
-5.3 take the id parameter and see if it matches any of the IDs in the movie object list. If it does, return the movie object.
+5.3 take the IMDB id parameter and see if it matches any of the IDs in the movie object list. If it does, return the movie object.
+
+why isn't this working?
 */
 
 
@@ -224,10 +226,10 @@ if (movies = []){
 } 
 
 for (let i=0; i<movies.length; i++){
-  if(imdbID === (movies[i].imdbID)) {
+  if((movies[i].imdbID)===imdbID) {
     return movies[i]
   }
-}
+} return movies[i] .  //does not change result
 }
 
 /**

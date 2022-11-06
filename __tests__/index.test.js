@@ -59,7 +59,7 @@ describe("getHighestMetascore()", () => {
   });
 });
 
-describe.only("getAverageIMDBRating()", () => {
+describe("getAverageIMDBRating()", () => {
   test("should return the average IMDB rating across all movies", () => {
     const actual = getAverageIMDBRating(movies);
     const expected = 7.76;
@@ -239,7 +239,7 @@ describe("getAllMoviesReleasedAtOrBeforeYear()", () => {
   });
 });
 
-describe("getBiggestBoxOfficeMovie()", () => {
+describe.only("getBiggestBoxOfficeMovie()", () => {
   test("should return the name of the movie with the highest box office", () => {
     const actual = getBiggestBoxOfficeMovie(movies);
     const expected = "Incredibles 2";

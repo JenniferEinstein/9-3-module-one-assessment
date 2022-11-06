@@ -118,7 +118,7 @@ function getAverageIMDBRating(movies) {
     comboRating += +(movies[i].ratings[0].value.slice(0,3))
   }
   averageRating = comboRating/(movies.length)
-  
+
   return averageRating
 }
 
@@ -133,7 +133,28 @@ function getAverageIMDBRating(movies) {
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+function countByRating(movies) {
+/* instructions to self
+  input = movies objects
+  output = an object containing how many movies does each rating cagegory hold (do we need to account for ratings if there are none in that category? Probably not.)
+  4.1  add parameter
+  4.2  add guard clause to make sure there are any movies. [this could return naturally without a guard clause]
+  4.3  add empty object to push ratings into
+  4.4  Should i use the for loop to count up numbers for each rating? Should I use filter to count up numbers for each rating? Is there a way to do that so I don't have to know what the ratings are before I start counting them up? Can I do these all at once or do I have to do them one by one? But if I do it this way, all I will get back is the count, not the keys.
+  */
+
+ratingsObject = {}
+console.log(movies.indexOf(movies.rated))
+
+function isPG(value) {
+  return value ==="PG"
+}
+let filteredPG=movies.filter(isPG);
+
+let countPG = movies.filter(movies)
+
+return ratingsObject
+}
 
 /**
  * findById()
@@ -149,7 +170,28 @@ function countByRating() {}
       // Toy Story 4
     };
  */
-function findById() {}
+function findById(movies, imdbID) {
+/*
+5.1 insert parameters
+5.2 insert guard clause: return null for empty array or no ID match
+5.3 take the id parameter and see if it matches any of the IDs in the movie object list. If it does, return the movie object.
+*/
+
+if (movies = []){
+  return null
+} 
+
+
+
+for (let i=0; i<movies.length; i++){
+
+  if(imdbID === (movies.imdbID)) {
+    return movies[i]
+  }
+}
+
+
+}
 
 /**
  * filterByGenre()
@@ -208,7 +250,27 @@ function getAllMoviesReleasedAtOrBeforeYear() {}
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie(movies) {
+
+/*
+shouldn't this just be the metascore question? No, because you have to return the name of the movie. Also, I need to change the box office amount into a number instead of a string. Get rid of the dollar sign. Get rid of the commas. Join everything back together.
+
+OK, but why is Fantasia coming back as having returned the most amount of money. It clearly hasn't. Also, I tried using a guard clause, but that turned everything null.
+
+*/
+
+let highestBox = 0
+let movieMost = null
+
+for (let i=0; i<movies.length; i++) {
+  let reduxBoxOffice = movies[i].boxOffice.slice(1).replace(/,/g,"");
+  if(reduxBoxOffice > highestBox) {
+    highestBox=reduxBoxOffice;
+    movieMost = movies[i].title;
+  }
+}
+return movieMost
+}
 
 // Do not change anything below this line.
 module.exports = {

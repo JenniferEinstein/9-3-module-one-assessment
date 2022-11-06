@@ -143,15 +143,56 @@ function countByRating(movies) {
   4.4  Should i use the for loop to count up numbers for each rating? Should I use filter to count up numbers for each rating? Is there a way to do that so I don't have to know what the ratings are before I start counting them up? Can I do these all at once or do I have to do them one by one? But if I do it this way, all I will get back is the count, not the keys.
   */
 
-ratingsObject = {}
-console.log(movies.indexOf(movies.rated))
+let ratingsObject = {}
+let arrayPG
 
-function isPG(value) {
-  return value ==="PG"
+let arrayP
+let arrayPG13
+let arrayR
+
+
+
+// for (let i=0;i<movies.length;i++){
+//   if (movies[i].rated = "PG"){
+//     arrayPG.push(movies.title)
+//   } 
+//   if (movies[i].rated = "P"){
+//     arrayP.push(movies.title)
+//   } 
+//   if (movies[i].rated = "PG13"){
+//     arrayPG13.push(movies.title)
+//   } 
+//   if (movies[i].rated = "R"){
+//     arrayR.push(movies.title)
+//   } 
+
+function isPG(movies,PG) {
+  var r=0
+  for (i=0;i<movies.length; i++){
+    if (movies[i] == PG){r++} 
+    }return r
 }
-let filteredPG=movies.filter(isPG);
 
-let countPG = movies.filter(movies)
+function isP(movies,P) {
+  var n=0
+  for (i=0;i<movies.length; i++){
+    if (movies[i] == P){n++} 
+    }return n
+}
+
+if (isPG != 0){
+  arrayPG = {PG:isPG}
+}
+
+if (isP != 0) {
+  arrayP = {P:isP}
+}
+
+RatingsObject=[arrayP, arrayPG]
+
+// let filteredPG=movies.filter(isPG);
+
+// let countPG = movies.filter(movies)
 
 return ratingsObject
 }
@@ -177,20 +218,16 @@ function findById(movies, imdbID) {
 5.3 take the id parameter and see if it matches any of the IDs in the movie object list. If it does, return the movie object.
 */
 
+
 if (movies = []){
   return null
 } 
 
-
-
 for (let i=0; i<movies.length; i++){
-
-  if(imdbID === (movies.imdbID)) {
+  if(imdbID === (movies[i].imdbID)) {
     return movies[i]
   }
 }
-
-
 }
 
 /**
@@ -213,7 +250,28 @@ for (let i=0; i<movies.length; i++){
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(movies, genre) {
+  /*
+  add parameters
+  take the genre inputted and return all movies that fall under that genre.
+  Movies are listed under more than one genre so be aware of that.
+  return a list of movies in an array of
+  */
+
+let desiredMovies = []
+// genre=genre.toLowerCase()
+// genre=string[0].toUpperCase()
+
+for (let i=0; i<movies.length; i++) {
+
+  if(movies[i].genre.includes(genre)) {
+    desiredMovies.push(movies[i])
+  }
+}
+
+
+return desiredMovies
+}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
@@ -237,7 +295,17 @@ function filterByGenre() {}
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
+
+  let moviesRequested=[];
+  for (let i=0; i<movies.length; i++){
+    if (movies[i].released.substr(-4,4) < year+1){
+      moviesRequested.push(movies[i])
+    }
+
+  }
+return moviesRequested
+}
 
 /**
  * getBiggestBoxOfficeMovie()
